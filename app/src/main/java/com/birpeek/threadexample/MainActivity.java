@@ -16,10 +16,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        bar = (ProgressBar) findViewById(R.id.progressBar1);
-        tvPercent = (TextView) findViewById(R.id.tvPercent);
-
-//        new Thread(new Task()).start();
+        bar = findViewById(R.id.progressBar1);
+        tvPercent = findViewById(R.id.tvPercent);
 
     }
 
@@ -38,9 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
             for (int i=0; i<=100; i+=10){
 
-                 final int value = i;
-                bar.setProgress(value);
-                runOnUiThread(new showValue(value));
+                bar.setProgress(i);
+                runOnUiThread(new showValue(i));
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
@@ -53,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         private class showValue implements Runnable{
             private final int i;
 
-            public showValue(int i) {
+            private showValue(int i) {
                 this.i = i;
             }
 
